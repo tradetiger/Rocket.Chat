@@ -6,13 +6,20 @@
 		{{#if currentUser}}
 			<div class="rooms-list">
 				<div class="wrapper">
-					{{> starredRooms }}
-					{{> channels }}
-					{{> directMessages }}
-					{{> privateGroups }}
-					<h3>
-						<a href="{{pathFor 'privateHistory'}}">{{_ "History"}}</a>
+					{{> starredRooms}}
+					{{> vipRooms}}
+					{{> directMessages}}
+					<h3><a href="http://www.woojou.com" class="logo">RETOUR AU SITE PUBLIQUE</a></h3>
+					<h3><a href="http://www.woojou.net:3000" class="logo">RETOUR &Agrave; L&#39;ACCUEIL PRIV&Eacute;</a></h3>
+					{{#if isAdmin}}
+					{{ > channels }}
+					<h3 class="open-settings">
+						{{_ "App_Settings"}}
 					</h3>
+					{{/if}}
+					<!--h3>
+						<a href="{{pathFor 'privateHistory'}}">{{_ "History"}}</a>
+					</h3-->
 				</div>
 			</div>
 			<div class="flex-nav hidden">
