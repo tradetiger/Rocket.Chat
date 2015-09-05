@@ -1,0 +1,12 @@
+<template name="vipRooms">
+	<h3 class="{{isActive}}">INTERET VIP</h3>
+	{{#if total}}
+		<ul>
+			{{#each rooms}}
+				{{> chatRoomItem }}
+			{{/each}}
+		</ul>
+	{{else}}
+		<p class="empty">aucuns int&eacute;rets</p>
+	{{/if}}
+</template>
