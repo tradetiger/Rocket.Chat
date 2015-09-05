@@ -70,9 +70,22 @@ RocketChat.sendMessage = (user, message, room, options) ->
 					alert: true
 					# open the room for the user
 					open: true
+					blocked: false
 				# increment unread couter
 				$inc:
 					unread: 1
+
+			ChatSubscription.update
+				# only subscriptions to the same room
+				rid: message.rid
+				# only direct messages subscriptions
+				t: 'd'
+				# msg owner
+				'u._id': message.u._id
+				pending: true
+			,
+				$set:
+					pending: false
 
 			if Push.enabled is true
 				userOfMention = Meteor.users.findOne({_id: message.rid.replace(message.u._id, ''), statusConnection: {$ne: 'online'}}, {fields: {username: 1}})

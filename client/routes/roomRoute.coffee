@@ -8,8 +8,6 @@ openRoom = (type, name) ->
 			if RoomManager.open(type + name).ready() isnt true
 				return
 
-			c.stop()
-
 			query =
 				t: type
 				name: name
@@ -23,7 +21,14 @@ openRoom = (type, name) ->
 			if not room?
 				Session.set 'roomNotFound', {type: type, name: name}
 				BlazeLayout.render 'main', {center: 'roomNotFound'}
+				return c.stop()
+
+			subscription = ChatSubscription.findOne({rid: room._id})
+			if subscription?.blocked is true
+				BlazeLayout.render 'main', {center: 'roomBlocked'}
 				return
+
+			c.stop()
 
 			mainNode = document.querySelector('.main-content')
 			if mainNode?
