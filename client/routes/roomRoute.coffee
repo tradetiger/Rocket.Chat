@@ -23,6 +23,8 @@ openRoom = (type, name) ->
 				BlazeLayout.render 'main', {center: 'roomNotFound'}
 				return c.stop()
 
+			Session.set 'openedRoom', room._id
+
 			subscription = ChatSubscription.findOne({rid: room._id})
 			if subscription?.blocked is true
 				BlazeLayout.render 'main', {center: 'roomBlocked'}
@@ -38,8 +40,6 @@ openRoom = (type, name) ->
 				mainNode.appendChild roomDom
 				if roomDom.classList.contains('room-container')
 					roomDom.querySelector('.messages-box > .wrapper').scrollTop = roomDom.oldScrollTop
-
-			Session.set 'openedRoom', room._id
 
 			Session.set 'editRoomTitle', false
 			readMessage.disable()
