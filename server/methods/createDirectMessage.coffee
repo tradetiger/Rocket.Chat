@@ -40,6 +40,8 @@ Meteor.methods
 				ts: now
 				ls: now
 				open: true
+				blocked: false
+				pending: false
 			$setOnInsert:
 				blocked: true
 				name: to.username
@@ -55,6 +57,9 @@ Meteor.methods
 			rid: rid
 			$and: [{'u._id': to._id}]
 		,
+			$set:
+				blocked: false
+				pending: false
 			$setOnInsert:
 				pending: true
 				name: me.username
