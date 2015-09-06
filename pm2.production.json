@@ -3,7 +3,7 @@
 		"name": "rocket.chat",
 		"max_memory_restart": "1024M",
 		"log_date_format": "YYYY-MM-DD HH:mm:ss SSS",
-		"script": "/home/woojou/public_html/chat_bundle/main.js",
+		"script": "/home/woojou/public_html/chat_bundle/bundle/main.js",
 		"out_file": "/var/log/rocket.chat/app.log",
 		"error_file": "/var/log/rocket.chat/err.log",
 		"port": "3000",
