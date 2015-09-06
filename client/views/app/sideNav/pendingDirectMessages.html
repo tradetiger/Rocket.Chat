@@ -1,12 +1,12 @@
 <template name="pendingDirectMessages">
 	<h3 class="add-room {{isActive}}">
-		Invites
+		Ils on voter pour toi!
 	</h3>
 	<ul>
 		{{#each rooms}}
 			{{> chatRoomItem }}
 		{{else}}
-			<p class="empty">{{_ "No_direct_messages_yet" }}</p>
+			<p class="empty">Tu n'as reçu aucun vote pour l'instant</p>
 		{{/each}}
 	</ul>
 </template>

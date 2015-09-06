@@ -1,5 +1,5 @@
 <template name="starredRooms">
-	<h3 class="{{isActive}}">{{_ "Favorites"}}</h3>
+	<h3 class="{{isActive}}">MES MATCHS</h3>
 	{{#if total}}
 		<ul>
 			{{#each rooms}}
@@ -7,6 +7,6 @@
 			{{/each}}
 		</ul>
 	{{else}}
-		<p class="empty">{{_ "No_favorites_yet" }}</p>
+		<p class="empty">Tu n'as aucun match pour l'instant</p>
 	{{/if}}
 </template>

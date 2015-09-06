@@ -1,13 +1,13 @@
 <template name="directMessages">
 	<h3 class="add-room {{isActive}}">
-		{{_ "Direct_Messages"}}
+		ZONE DE VOTE
 		<i class="a-plus"></i>
 	</h3>
 	<ul>
 		{{#each rooms}}
 			{{> chatRoomItem }}
 		{{else}}
-			<p class="empty">{{_ "No_direct_messages_yet" }}</p>
+			<p class="empty">Tu n'as pas voter encore</p>
 		{{/each}}
 	</ul>
 </template>

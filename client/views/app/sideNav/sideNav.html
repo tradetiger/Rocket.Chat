@@ -7,11 +7,11 @@
 			<div class="rooms-list">
 				<div class="wrapper">
 					{{> starredRooms}}
-					{{> vipRooms}}
+					{{!-- > vipRooms --}}
 					{{> pendingDirectMessages}}
 					{{> directMessages}}
 					<h3><a href="http://www.woojou.com" class="logo">RETOUR AU SITE PUBLIQUE</a></h3>
-					<h3><a href="http://www.woojou.net:3000" class="logo">RETOUR &Agrave; L&#39;ACCUEIL PRIV&Eacute;</a></h3>
+					<h3><a href="/home" class="logo">RETOUR &Agrave; L&#39;ACCUEIL PRIV&Eacute;</a></h3>
 					{{#if isAdmin}}
 					{{ > channels }}
 					<h3 class="open-settings">
