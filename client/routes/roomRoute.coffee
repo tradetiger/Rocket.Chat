@@ -21,7 +21,7 @@ openRoom = (type, name) ->
 			if not room?
 				Session.set 'roomNotFound', {type: type, name: name}
 				BlazeLayout.render 'main', {center: 'roomNotFound'}
-				return c.stop()
+				return
 
 			Session.set 'openedRoom', room._id
 
