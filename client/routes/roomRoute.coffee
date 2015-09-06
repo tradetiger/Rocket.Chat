@@ -8,8 +8,6 @@ openRoom = (type, name) ->
 			if RoomManager.open(type + name).ready() isnt true
 				return
 
-			c.stop()
-
 			query =
 				t: type
 				name: name
@@ -25,6 +23,15 @@ openRoom = (type, name) ->
 				BlazeLayout.render 'main', {center: 'roomNotFound'}
 				return
 
+			Session.set 'openedRoom', room._id
+
+			subscription = ChatSubscription.findOne({rid: room._id})
+			if subscription?.blocked is true
+				BlazeLayout.render 'main', {center: 'roomBlocked'}
+				return
+
+			c.stop()
+
 			mainNode = document.querySelector('.main-content')
 			if mainNode?
 				for child in mainNode.children
@@ -33,8 +40,6 @@ openRoom = (type, name) ->
 				mainNode.appendChild roomDom
 				if roomDom.classList.contains('room-container')
 					roomDom.querySelector('.messages-box > .wrapper').scrollTop = roomDom.oldScrollTop
-
-			Session.set 'openedRoom', room._id
 
 			Session.set 'editRoomTitle', false
 			readMessage.disable()
