@@ -42,8 +42,10 @@ Meteor.methods
 				open: true
 				blocked: false
 				pending: false
+				f: true
 			$setOnInsert:
 				blocked: true
+				f: false
 				name: to.username
 				t: 'd'
 				alert: false
@@ -60,8 +62,11 @@ Meteor.methods
 			$set:
 				blocked: false
 				pending: false
+				f: true
 			$setOnInsert:
 				pending: true
+				blocked: true
+				f: false
 				name: me.username
 				t: 'd'
 				open: true
