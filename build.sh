@@ -5,13 +5,12 @@ if [ ! $1 ]; then
 fi
 
 if [ $1 ]; then
+	cd /home/woojou/public_html/chat
 	source ./build-info.sh
 	export METEOR_SETTINGS=$(cat settings.$1.json)
-	meteor add rocketchat:external
-	meteor add rocketchat:hubot
-	meteor build --server https://demo.rocket.chat --directory /var/www/rocket.chat
-	cd /var/www/rocket.chat/bundle/programs/server
+	meteor build --server http://chat.woojou.com:3000 --directory /home/woojou/public_html/chat_bundle
+	cd /home/woojou/public_html/chat_bundle/programs/server
 	npm install
-	cd /var/www/rocket.chat/current
-	pm2 startOrRestart /var/www/rocket.chat/current/pm2.$1.json
+	cd /home/woojou/public_html/chat
+	pm2 startOrRestart /home/woojou/public_html/chat/pm2.$1.json
 fi
